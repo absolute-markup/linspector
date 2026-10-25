@@ -1,0 +1,4 @@
+[workspace]
+members = ["crates/inventory", "crates/desktop"]
+default-members = ["crates/inventory"]
+resolver = "2"

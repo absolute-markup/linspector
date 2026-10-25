@@ -1,0 +1,71 @@
+[
+  {
+    "name": "gcc-c++",
+    "title": "GNU C++ compiler",
+    "description": "Synthetic demonstration metadata. Live RPM inventory supplies the actual package description.",
+    "epoch": "0",
+    "version": "0.demo",
+    "release": "1",
+    "arch": "x86_64",
+    "license": "Unknown in demo",
+    "vendor": "Demo",
+    "url": "",
+    "source_rpm": "demo.src.rpm",
+    "installed_bytes": "0",
+    "install_time": "0",
+    "requires": [
+      "gcc = 16.0",
+      "libstdc++-devel"
+    ],
+    "provides": [
+      "gcc-c++ = 16.0"
+    ],
+    "repository": "Unknown",
+    "provenance": "Synthetic demonstration \u2014 not your system"
+  },
+  {
+    "name": "qt6-qtbase-devel",
+    "title": "Qt 6 base development files",
+    "description": "Synthetic demonstration metadata. Live RPM inventory supplies the actual package description.",
+    "epoch": "0",
+    "version": "0.demo",
+    "release": "1",
+    "arch": "x86_64",
+    "license": "Unknown in demo",
+    "vendor": "Demo",
+    "url": "",
+    "source_rpm": "demo.src.rpm",
+    "installed_bytes": "0",
+    "install_time": "0",
+    "requires": [
+      "qt6-qtbase = 6.11",
+      "pkgconfig"
+    ],
+    "provides": [
+      "qt6-qtbase-devel = 6.11"
+    ],
+    "repository": "Unknown",
+    "provenance": "Synthetic demonstration \u2014 not your system"
+  },
+  {
+    "name": "libstdc++",
+    "title": "GNU standard C++ library",
+    "description": "Synthetic demonstration metadata. Live RPM inventory supplies the actual package description.",
+    "epoch": "0",
+    "version": "0.demo",
+    "release": "1",
+    "arch": "x86_64",
+    "license": "Unknown in demo",
+    "vendor": "Demo",
+    "url": "",
+    "source_rpm": "demo.src.rpm",
+    "installed_bytes": "0",
+    "install_time": "0",
+    "requires": [],
+    "provides": [
+      "libstdc++.so.6()(64bit)"
+    ],
+    "repository": "Unknown",
+    "provenance": "Synthetic demonstration \u2014 not your system"
+  }
+]
