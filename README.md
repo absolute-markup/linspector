@@ -1,6 +1,6 @@
 # Linspector
 
-A native Qt 6 Quick / QML desktop starter with a Rust inventory engine and CXX-Qt 0.8.1 QObject bridge. No browser runtime, Tauri or WebView. Edit the interface in `crates/desktop/qml/Main.qml` using VS Code and the Qt QML extension; Rust Analyzer supports the Rust crates.
+A native Qt 6 Quick / QML desktop starter with a Rust inventory engine and CXX-Qt 0.8.1 QObject bridge. Edit the interface in `crates/desktop/qml/Main.qml` using VS Code and the Qt QML extension; Rust Analyzer supports the Rust crates.
 
 ## Build and run on Fedora
 
