@@ -8,7 +8,7 @@ ApplicationWindow {
     visible: true
     width: 1220; height: 820
     minimumWidth: 800; minimumHeight: 600
-    title: "Linspector · Absolute Markup"
+    title: "Linspector"
     color: "#f2f1ec"
     property var packages: []
     property var filtered: []
