@@ -1,6 +1,6 @@
 # Linspector
 
-## Your system, unpacked.
+## Linux Package Inspector
 
 **Explore the software behind your Linux desktop.** Linspector brings applications, command-line tools, libraries and development packages into one native interface, alongside storage usage and system details.
 
