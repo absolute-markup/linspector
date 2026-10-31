@@ -1,0 +1,16 @@
+%NAME%
+example-app
+%VERSION%
+1.0-1
+%DESC%
+Example desktop application
+%ARCH%
+x86_64
+%SIZE%
+2000
+%DEPENDS%
+example-virtual>=1
+%OPTDEPENDS%
+optional-tool: extra features
+%XDATA%
+pkgtype=pkg

@@ -1,0 +1,117 @@
+name: Testing report
+description: Report a passing test, failure, usability finding or blocked build on Linux.
+title: "[Testing] <distribution/version>: <result or finding>"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing Linspector by Absolute Markup! Start with [the testing guide](https://github.com/absolute-markup/linspector/blob/main/docs/testing.md).
+        Read-only desktop checks are welcome. Package removal/service-change tests belong in a disposable VM with a restorable snapshot.
+        Redact personal details. Do not upload credentials, private repository URLs or an unreviewed full System/inventory dump.
+  - type: input
+    id: revision
+    attributes:
+      label: Source version
+      description: Full commit from git rev-parse HEAD; for ZIPs, give download date and the GitHub commit if known. Do not use the old starter release.
+      placeholder: Commit SHA or source archive identification
+    validations:
+      required: true
+  - type: dropdown
+    id: distribution
+    attributes:
+      label: Distribution family
+      options:
+        - Fedora
+        - Ubuntu
+        - Debian
+        - Arch Linux
+        - openSUSE
+        - Other / derivative
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Release, architecture, GNOME/KDE/other, Wayland/X11, display scaling, and physical machine or booted VM. Include whether mutable/immutable if known. No hostname or username needed.
+      placeholder: "Example: Ubuntu 24.04, x86_64, GNOME Wayland, 100%, desktop VM"
+    validations:
+      required: true
+  - type: dropdown
+    id: outcome
+    attributes:
+      label: Overall result
+      options:
+        - Passed the checks described below
+        - Partial success / some failures
+        - Build failed
+        - Startup or scan failed
+        - Blocked / could not complete
+        - Usability or code-review finding
+    validations:
+      required: true
+  - type: textarea
+    id: versions
+    attributes:
+      label: Tool versions and build/startup
+      description: Rust, Cargo, Qt, relevant package-manager versions; build command/result and normal desktop startup result. If unavailable, say why.
+    validations:
+      required: true
+  - type: dropdown
+    id: sources
+    attributes:
+      label: Sources inspected
+      multiple: true
+      options:
+        - RPM / DNF
+        - dpkg / APT
+        - ALPM / pacman
+        - RPM / Zypper
+        - Flatpak
+        - Snap
+        - System / Storage only
+        - None (build/startup blocked)
+    validations:
+      required: true
+  - type: textarea
+    id: checks
+    attributes:
+      label: Checks performed and results
+      description: Include detection, scan, metadata/ownership, relationships, System/Storage, search, refresh and UI checks as applicable. Mark unperformed checks not run. Passing reports are valuable.
+    validations:
+      required: true
+  - type: textarea
+    id: comparison
+    attributes:
+      label: Native inventory comparison
+      description: Counts per source, comparison commands, selected identities/versions and differences. Say not run if blocked. Avoid full private inventory dumps; collection time helps distinguish concurrent changes.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Expected behavior, observed behavior and reproduction
+      description: For a failure, include concise steps and the affected entry/source. For a passing report, say that no discrepancy was observed in the checks performed.
+    validations:
+      required: true
+  - type: textarea
+    id: management
+    attributes:
+      label: Management tests (disposable VM only)
+      description: Leave blank if not run. Give guest/snapshot baseline, preview/authentication outcome, exact before/after identities or service state, failures and recovery needed. Do not test destructive cases on a working machine.
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Relevant logs or screenshots
+      description: Optional redacted excerpts/images. Remove account paths, IP/MAC addresses, secrets and private source URLs before posting.
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Report checks
+      options:
+        - label: I identified the source version and distinguished tests performed from tests not run.
+          required: true
+        - label: I reviewed attachments and removed sensitive or personal information.
+          required: true
+        - label: Any package-changing or service-changing tests described here were performed in a disposable VM; otherwise I did not run those tests.
+          required: true

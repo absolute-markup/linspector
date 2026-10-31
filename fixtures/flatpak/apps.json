@@ -1,0 +1,5 @@
+[
+ {"ref":"org.example.Paint/x86_64/stable","installation":"user","name":"Paint","description":"Draw <plain text> & sketches","version":"2.1~rc1","origin":"example-remote","runtime":"org.example.Platform/x86_64/24.08","active_commit":"aaaaaaaaaaaa","installed_size":"1.2 MB"},
+ {"ref":"org.example.Paint/x86_64/stable","installation":"system","name":"Paint","description":"System edition","version":"2.0","origin":"example-remote","runtime":"org.example.Platform/x86_64/24.08","active_commit":"bbbbbbbbbbbb"},
+ {"ref":"org.example.Paint/aarch64/beta","installation":"system (extra)","name":"Paint","description":"Named installation","version":"","origin":"","runtime":"org.example.Platform/aarch64/24.08","active_commit":"cccccccccccc"}
+]

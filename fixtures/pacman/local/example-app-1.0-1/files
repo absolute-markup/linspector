@@ -1,0 +1,3 @@
+%FILES%
+usr/share/applications/example.desktop
+usr/lib/systemd/system/example.service

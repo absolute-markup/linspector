@@ -1,56 +1,84 @@
 # Linspector
 
-A native Qt 6 Quick / QML desktop starter with a Rust inventory engine and CXX-Qt 0.8.1 QObject bridge. Edit the interface in `crates/desktop/qml/Main.qml` using VS Code and the Qt QML extension; Rust Analyzer supports the Rust crates.
+## Your system, unpacked.
 
-## Build and run on Fedora
+**Explore the software behind your Linux desktop.** Linspector brings applications, command-line tools, libraries and development packages into one native interface, alongside storage usage and system details.
 
-Prerequisites: Rust stable with Cargo, a C++17 compiler and Qt 6 development tools. The uploaded Fedora 44 list already includes the named C++/Qt toolchain; Rust/Cargo must also be available.
+Designed and developed by **Absolute Markup**. Built with **Qt Quick/QML and Rust**.
 
-```sh
-sudo dnf install gcc-c++ cmake ninja-build pkgconf-pkg-config qt6-qtbase-devel qt6-qtdeclarative-devel qt6-qttools-devel clang lld cargo rust
-export QMAKE=/usr/bin/qmake6
-cargo build --locked -p linspector
-cargo run --locked -p linspector
-```
+![Linspector's native desktop interface showing installed software, storage and package details](docs/images/overview.png)
 
-The installation command is a manual prerequisite only; the application never invokes DNF or sudo. Cargo downloads dependencies on the first build. Cargo is the build entry point; CXX-Qt compiles and links the Qt/C++ bridge internally, so no top-level CMake project is necessary.
+**Early testing · Source builds · Linux**
 
-```sh
-# Independent core tests; Qt is not compiled for this package
-cargo test --locked -p linspector-inventory
-# Optional read-only integration test on an RPM host
-cargo test --locked -p linspector-inventory --test live_rpm -- --ignored
-# Export complete live inventory as JSON
-cargo run --locked -p linspector-inventory > inventory.json
-# Clearly marked synthetic fixture in the GUI
-cargo run --locked -p linspector -- --demo
-# Headless startup check (exits after five seconds)
-QT_QPA_PLATFORM=offscreen cargo run --locked -p linspector -- --demo --smoke
-```
+[Start testing](docs/testing.md) · [Submit a testing report](https://github.com/absolute-markup/linspector/issues/new?template=testing-report.yml) · [Build guide](docs/development.md) · [Roadmap](docs/milestones.md)
 
-## Implemented
+## See more than applications
 
-- Every installed RPM database entry: command-line tools, libraries, development packages, services and applications. No AppStream/desktop-file filter. Distinct architectures, epochs and parallel installed versions remain distinct.
-- RPM summary as the package title, exact package name, multiline description, installed epoch/version/release, architecture, license, vendor, URL, source RPM, installed byte size and installation timestamp.
-- Full required and provided capability expressions from RPM, including version constraints. Do not mistake capability strings for resolved package-name edges.
-- On-demand RPM `--whatrequires` reverse dependency candidates for the selected package's name and explicit capabilities. Capability names are queried without version constraints, so these are labelled as candidates rather than solver-validated edges; file requirements and rich expressions may be incomplete. This is not a DNF transaction solver or exhaustive dependency graph.
-- Background inventory and reverse queries, busy/error states, multiword search, selectable plain text details and refresh. Metadata is never evaluated as HTML, QML, a command or a shell argument string.
-- Synthetic inventory for UI work; sanitized 3,012-row DNF attachment fixture and its review in `docs/upload-review.md`.
+Your computer relies on more than the apps in its launcher. Linspector helps you see the packages that make everything work, understand their role and explore how they connect.
 
-## Evidence and safe treatment
+- **Your installed software.** Browse applications, libraries, development tools and system packages. Different architectures, versions, installation scopes and Flatpak branches stay distinct.
+- **Details with context.** Inspect titles, descriptions, versions, sizes, licenses, maintainers, source packages and other metadata where the software source supplies them. Missing information stays unavailable.
+- **Package relationships.** Explore requirements, provided capabilities and possible reverse dependencies. Results explain their limits; a dependency count is never presented as proof that removal is safe.
+- **Storage at a glance.** See mounted filesystems, free space and the largest package footprints. Package estimates and filesystem usage have different meanings and are shown separately.
+- **A view of your system.** Find distribution, username and account/session details, CPU, memory, hardware, graphics, drives, networking, battery and available platform information in the System tab.
+- **Search and refresh.** Find software by name, description or source, then scan again when your system changes. Each software source has its own status so an unavailable source does not erase other results.
 
-All queries use `/usr/bin/rpm` with argument arrays, without a shell or elevated privileges. There are no installation, removal, repair or update operations. No removal safety score is inferred from names, dependency counts or a missing reverse result. A successful scan is a snapshot; package changes during scanning are possible. A failed refresh retains the previous inventory and reports the error.
+## How it works
 
-RPM source package, vendor and repository are different concepts. The live provider reports the source RPM and vendor; repository remains **Unknown** because this query cannot establish the original install repository. The uploaded DNF repository display is preserved separately as evidence, not silently joined onto live packages. Available update versions, installation reason, protected-package policy, signature/trust evaluation, resolved dependency graphs and transaction simulation are not implemented. Required capability expressions are shown exactly as RPM reports them. No links from untrusted metadata are automatically opened.
+1. **Open Linspector.** It detects your distribution and available software sources, then reads their installed inventories.
+2. **Browse or search.** Select a package to read its description, metadata and relationships.
+3. **Explore System and Storage.** See the wider picture of your machine and its space usage.
+4. **Review supported changes.** Where available, inspect a removal plan or eligible service startup change before confirmation and authentication.
 
-## Next implementation steps
+Ordinary inspection runs as your normal account. The application has no automatic inventory-upload feature. System details can contain personal information, so review screenshots and logs before sharing them.
 
-1. Add a versioned DNF5/libdnf5 read-only provider for repository evidence, available versions and installation reasons, retaining explicit unknown values.
-2. Add solver-backed dependency edges, file provides and rich dependency evaluation with integration fixtures for multilib and parallel kernels.
-3. Replace the starter's JSON-to-QML list bridge with a paginated native QAbstractListModel for very large inventories, preserving the core API.
-4. Add cancellation/timeouts for package-manager queries, selection retention, sort/filter controls and accessibility/keyboard testing.
-5. Package Fedora RPMs and add CI against supported Qt/Rust/Fedora versions. Any future transactions need a separately reviewed design with policy checks, a preview and explicit confirmation.
+## Current status
 
-See `docs/verification.md` for this archive's actual verification results and limits. Source copyright belongs to Absolute Markup; no open-source license grant is implied. Dependencies retain their respective licenses. Check Qt licensing for your eventual distribution model.
+Linspector is **in early development and seeking testers**, not a finished package manager. The long-term goal is broad Linux distribution support; full compatibility is not yet established.
 
-Integration reference: [CXX-Qt's Cargo build example, pinned to v0.8.1](https://github.com/KDAB/cxx-qt/tree/v0.8.1/examples/cargo_without_cmake). The version is deliberately pinned for reproducible starter builds, not asserted to be the latest release.
+| System or source | Available today | Validation still needed |
+| --- | --- | --- |
+| **Fedora 44 / RPM** | Live package inspection and DNF removal previews; an authenticated helper and eligible systemd startup controls are implemented | Real authentication, removal, service changes and recovery in a disposable desktop VM |
+| **Ubuntu / Debian** | Read-only dpkg inspection, metadata, ownership and dependency candidates | Full native desktop builds/startup; package data has passed comparisons against Ubuntu 24.04 and Debian 12/13 base-image databases |
+| **Arch / pacman** | Read-only local ALPM package database inspection | Native Arch desktop and pacman comparisons; current support uses the default database path |
+| **openSUSE / RPM + Zypper** | RPM inspection and a Zypper removal dry-run review adapter | Native desktop/preview validation; authenticated Zypper execution is not implemented |
+| **Flatpak** | Read-only apps, runtimes, extensions, branches, scopes, commits and size estimates | Wider distribution/version coverage; live Fedora and isolated installation-scope checks have passed |
+| **Snap** | Read-only installed revisions, states, bases and installed components | Real Snap daemon integration; current verification uses fixtures |
+
+**Management is experimental.** Fedora changes require a separately installed helper and administrator authentication. Without that helper, changes remain unavailable. Perform package-changing tests only in a disposable VM with a restorable snapshot, following the [Fedora management test guide](docs/fedora-vm-testing.md).
+
+Ubuntu/Debian, pacman, Flatpak and Snap inspection is currently read-only. This is the present implementation scope. Libraries and ordinary packages do not have a general “disable” switch; the implemented startup controls apply only to eligible package-owned services.
+
+Repository origin and available updates are incomplete or unavailable. Reverse dependencies are candidates, not a complete solver-validated graph. Package footprints can include shared files and are not a promise of space recovered by removal. See the [verification record](docs/verification.md) for evidence and remaining limits.
+
+## Try it and help shape it
+
+We welcome **users and developers on Fedora, Ubuntu, Debian, Arch Linux and openSUSE**. Build/startup results, missing packages, metadata differences, usability feedback and code reviews all help.
+
+Start with the [testing guide](docs/testing.md), use the current `main` source and record the commit you tested. Then [submit a testing report](https://github.com/absolute-markup/linspector/issues/new?template=testing-report.yml), including successful results. Build or startup failures are useful findings too.
+
+There are **no current ready-to-install AppImage, RPM or Flatpak releases**. The historical `v0.1.0-starter` release predates the current integrations; use [the current source](https://github.com/absolute-markup/linspector/archive/refs/heads/main.zip) or clone the repository. Build instructions are in the [developer guide](docs/development.md) and [Ubuntu/Debian guide](docs/ubuntu-debian-testing.md).
+
+## What comes next
+
+Our next priorities are to:
+
+- **Finish native validation.** Close the Ubuntu/Debian desktop, Fedora management and Arch/Snap/openSUSE testing gaps, then fix and retest reported problems.
+- **Extend reviewed management.** Implement transaction-bound openSUSE execution and develop additional management capabilities with explicit review and validation for each provider.
+- **Support more Linux systems.** Add dedicated workflows for immutable, transactional and declarative distributions, followed by additional distribution families.
+- **Improve everyday use.** Refine the interface, accessibility, keyboard navigation, display scaling and performance on large inventories.
+- **Make installation easier.** Prepare clean-install checks, a compatibility matrix and AppImage/RPM packaging, then pursue Flatpak marketplace distribution once its permissions and host integration are resolved.
+
+These are development goals, not released features or delivery dates. Follow the [milestone roadmap](docs/milestones.md) for scope and progress.
+
+## For developers and reviewers
+
+Linspector uses native **Qt Quick/QML + Rust + CXX-Qt**, with provider-specific inventory readers and explicit capability checks. See the [developer guide](docs/development.md), [distribution architecture](docs/distribution-support.md), [management boundary](docs/management-validation.md) and [contribution guide](CONTRIBUTING.md).
+
+Source is published for inspection and testing. Copyright remains with Absolute Markup; **an open-source license has not been selected**. See [COPYRIGHT](COPYRIGHT). Third-party dependencies and bundled fonts/icons retain their own licenses.
+
+---
+
+**Linspector** — LINux + inSPECTOR
+
+Designed and developed by **Absolute Markup**.

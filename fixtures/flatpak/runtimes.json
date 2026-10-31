@@ -1,0 +1,8 @@
+[
+ {"ref":"org.example.Platform/x86_64/24.08","installation":"user","name":"Example Platform","version":"","origin":"example-remote","active_commit":"dddddddddddd"},
+ {"ref":"org.example.Platform/x86_64/24.08","installation":"system","name":"Example Platform","version":"24.08","origin":"example-remote","active_commit":"eeeeeeeeeeee"},
+ {"ref":"org.example.Platform/aarch64/24.08","installation":"system (extra)","name":"Example Platform","version":"","origin":"example-remote","active_commit":"ffffffffffff"},
+ {"ref":"org.example.Paint.Locale/x86_64/stable","installation":"user","name":"Paint translations","active_commit":"111111111111"},
+ {"ref":"org.example.Sdk/x86_64/24.08","installation":"system","name":"Example SDK","active_commit":"222222222222"},
+ {"ref":"org.example.Paint.Debug/x86_64/stable","installation":"system","name":"Paint debug data","active_commit":"333333333333"}
+]

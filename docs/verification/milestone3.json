@@ -1,0 +1,52 @@
+{
+  "milestone": 3,
+  "date": "2026-10-26",
+  "status": "implementation_verified_vm_validation_pending",
+  "distinct_rust_tests": 70,
+  "unit_tests": 52,
+  "rpm_live_tests": 7,
+  "provider_contract_tests": 5,
+  "dpkg_integration_tests": 3,
+  "helper_process_rejection_tests": 2,
+  "compile_fail_tests": 1,
+  "real_dpkg_base_filesystems": [
+    "Ubuntu 24.04.4",
+    "Debian 12",
+    "Debian 13"
+  ],
+  "qt_desktop_build": "passed",
+  "helper_build": "passed",
+  "polkit_local_dtd_validation": "passed",
+  "live_rpm_entries": 3022,
+  "native_preview_rows": 6,
+  "helper_installed_on_working_host": false,
+  "working_host_package_service_mutations": false,
+  "actual_authentication_tested": false,
+  "privileged_replay_tested": false,
+  "actual_service_changes_tested": false,
+  "selinux_helper_integration_tested": false,
+  "interrupted_transaction_recovery_tested": false,
+  "environment_limits": [
+    "libvirt connection denied",
+    "no /dev/kvm"
+  ],
+  "fault_injection_scope": "in-memory native-operation failures and controlled unprivileged child processes; not real authentication/mutation",
+  "fixture_rpms_built_not_installed": [
+    {
+      "filename": "abmarkup-test-consumer-1.0-1.noarch.rpm",
+      "sha256": "366b2a0bce558e99ae1da6b4a61c557577763da7f573f9944392617c938cd32c"
+    },
+    {
+      "filename": "abmarkup-test-failure-1.0-1.noarch.rpm",
+      "sha256": "34bfa58a7a2f5a2397c42cd5377ce99da387ad62b5506ee9cb90c209a3721f68"
+    },
+    {
+      "filename": "abmarkup-test-leaf-1.0-1.noarch.rpm",
+      "sha256": "433455751eab4d536c9bfe417d7930274bb540afa5824c5ef216922480e97490"
+    },
+    {
+      "filename": "abmarkup-test-unrelated-1.0-1.noarch.rpm",
+      "sha256": "4a42521efd9939e848fcaa9ccdfd130f9c33ee25bc74f0a6d0914f59fe928006"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+  <vendor>Absolute Markup</vendor>
+  <action id="com.absolutemarkup.linspector.manage">
+    <description>Manage reviewed Linspector package and service changes</description>
+    <message>Authentication is required to apply a reviewed Linspector change</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/libexec/linspector-helper</annotate>
+  </action>
+</policyconfig>

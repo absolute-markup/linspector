@@ -1,0 +1,6 @@
+{"type":"sync","status-code":200,"status":"OK","result":[
+ {"name":"example","revision":"12","version":"1.0~rc1","title":"Example Studio","summary":"Draw & inspect","description":"A <plain text> app","status":"active","type":"app","base":"core22","confinement":"strict","tracking-channel":"latest/stable","installed-size":1234,"install-date":"2026-10-26T12:00:00Z","publisher":{"display-name":"Example Publisher","username":"example"},"apps":[{"name":"example","desktop-file":"/var/lib/snapd/desktop/applications/example.desktop"}],"components":[{"name":"extras","revision":"3","summary":"Installed extras","type":"standard","installed-size":"100","install-date":"2026-10-26T13:00:00Z"},{"name":"available-only","type":"standard"}]},
+ {"name":"example","revision":11,"version":"0.9","status":"installed","type":"app","base":"core22","installed-size":1200},
+ {"name":"core22","revision":"2955","version":"20261001","status":"active","type":"base","installed-size":77574144},
+ {"name":"local-demo_instance","revision":"x1","version":"custom","status":"active","type":"app","confinement":"devmode"}
+]}

@@ -1,5 +1,6 @@
 [package]
 name = "linspector-inventory"
+default-run = "linspector-inventory"
 version = "0.1.0"
 edition = "2021"
 authors = ["Absolute Markup"]

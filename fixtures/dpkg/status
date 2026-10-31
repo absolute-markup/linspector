@@ -1,0 +1,74 @@
+Package: sample-lib
+Status: install ok installed
+Priority: optional
+Section: libs
+Installed-Size: 123
+Maintainer: Example Maintainer <example@example.invalid>
+Architecture: amd64
+Multi-Arch: same
+Source: sample-source (1:2.0~rc1-3)
+Version: 1:2.0~rc1-3+b1
+Provides: sample-abi (= 2), alternate-abi
+Homepage: https://example.invalid/sample
+Description: Sample shared library
+ A library with <plain text> & native metadata.
+ .
+ Second paragraph.
+
+Package: sample-lib
+Status: install ok installed
+Priority: optional
+Section: libs
+Installed-Size: 120
+Maintainer: Example Maintainer <example@example.invalid>
+Architecture: i386
+Multi-Arch: same
+Version: 1:2.0~rc1-3+b1
+Description: Sample shared library (32-bit)
+ A multilib fixture.
+
+Package: sample-dev
+Status: hold ok installed
+Priority: optional
+Section: libdevel
+Installed-Size: 0
+Maintainer: Example Maintainer <example@example.invalid>
+Architecture: amd64
+Version: 1:2.0~rc1-3+b1
+Pre-Depends: base-runtime (>= 1.0)
+Depends: sample-lib:amd64 (= 1:2.0~rc1-3+b1), alternative-dev | sample-lib:any (>= 99)
+Recommends: sample-doc
+Description: Development headers
+ Development files for the sample library.
+
+Package: sample-app
+Status: install ok installed
+Priority: optional
+Section: utils
+Installed-Size: 512
+Maintainer: Example Maintainer <example@example.invalid>
+Architecture: all
+Version: 2.1+vendor-1
+Depends: sample-abi (>= 2) | alternative-abi, sample-lib:native
+Description: Sample application
+ The native fixture has a package-owned desktop entry.
+
+Package: damaged-tool
+Status: install reinstreq half-installed
+Priority: optional
+Section: utils
+Maintainer: Example Maintainer <example@example.invalid>
+Architecture: amd64
+Version: 0.9-1
+Description: Partially installed tool
+ Kept visible with its package state.
+
+Package: removed-tool
+Status: deinstall ok config-files
+Priority: optional
+Section: utils
+Maintainer: Example Maintainer <example@example.invalid>
+Architecture: amd64
+Version: 1-1
+Description: Removed package with leftover configuration
+ Not an installed package.

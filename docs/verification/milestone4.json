@@ -1,0 +1,64 @@
+{
+  "milestone": 4,
+  "date": "2026-10-27",
+  "status": "adapters_and_reviews_implemented_native_validation_gaps_open",
+  "distinct_rust_tests": 99,
+  "unit_tests": 74,
+  "rpm_live_tests": 7,
+  "provider_contract_tests": 6,
+  "dpkg_integration_tests": 3,
+  "flatpak_integration_tests": 2,
+  "helper_process_tests": 2,
+  "new_provider_fixture_tests": 4,
+  "compile_fail_tests": 1,
+  "qt_native_build": "passed",
+  "known_live_entries": 3113,
+  "rpm_entries": 3022,
+  "flatpak": {
+    "version": "1.18.4",
+    "refs": 91,
+    "apps": 30,
+    "runtimes_extensions": 61,
+    "sizes_and_full_commits_match_native": true,
+    "native_listings_unchanged_in_test": true,
+    "unknown_detail_results": 0,
+    "snapshot_sha256": "bf2c78e8087842f497c802c6f2a6de8b064f4ed310e3f257321bf43721fac283",
+    "isolated_fixture_refs": 12,
+    "isolated_scopes": [
+      "user",
+      "default system",
+      "named system"
+    ],
+    "isolated_system_deployments": "Copied synthetic user deployments, not privileged installations",
+    "fixture_apps_launched": false,
+    "mutation_support": false
+  },
+  "snap": {
+    "fixture_entries": 5,
+    "fixture_includes_inactive_local_revisions_and_installed_component": true,
+    "live_daemon_access": "denied by session permissions",
+    "private_mock_socket_binding": "also denied; HTTP parser tests are in-memory",
+    "error": "Inventory failed: snapd socket unavailable: Operation not permitted (os error 1)",
+    "actual_snapd_ipc_validated": false,
+    "mutation_support": false
+  },
+  "pacman": {
+    "fixture_packages": 2,
+    "layout_version": 9,
+    "default_local_database_reader": true,
+    "ownership_dependency_lock_escape_checks": "passed",
+    "actual_arch_runtime_validated": false,
+    "mutation_support": false
+  },
+  "opensuse": {
+    "existing_rpm_inspection": true,
+    "zypper_dry_run_adapter": true,
+    "xml_schema_source_and_negative_tests": "passed",
+    "native_zypper_run_tested": false,
+    "authenticated_execution_implemented": false,
+    "reason": "Requires native solver-lock-bound confirmation workflow and openSUSE validation; no DNF fallback"
+  },
+  "working_host_package_service_changes": false,
+  "milestone2_and3_validation_gaps": "remain open",
+  "milestone5_started": false
+}

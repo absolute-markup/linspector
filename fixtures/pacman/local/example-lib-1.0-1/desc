@@ -1,0 +1,23 @@
+%NAME%
+example-lib
+%VERSION%
+2:1.0~rc1-3
+%BASE%
+example
+%DESC%
+Example runtime <library> & tools
+%ARCH%
+x86_64
+%SIZE%
+1234
+%INSTALLDATE%
+1700000000
+%PACKAGER%
+Absolute Markup <example@example.invalid>
+%LICENSE%
+MIT
+%PROVIDES%
+example-virtual=1
+libexample.so=1-64
+%XDATA%
+pkgtype=split

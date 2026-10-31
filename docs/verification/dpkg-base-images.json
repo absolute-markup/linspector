@@ -1,0 +1,35 @@
+[
+  {
+    "distribution": "Ubuntu 24.04.4",
+    "base_layer": "f2a7f072635332d307212e318e07284948b89f4167fce5c4d7c9cfb7590b74b6",
+    "packages": 92,
+    "native_query": "Debian dpkg-query package management program query tool version 1.22.6 (amd64).",
+    "identities_versions_and_sizes_match": true,
+    "database_unchanged": true,
+    "database_sha256": "475065a73e0907cb09948d77be94f04588de8e01b3f30625b976e538b0e4ed1d",
+    "warnings": [],
+    "validation_scope": "Read-only extracted base filesystem on Fedora; not a booted OS or desktop test"
+  },
+  {
+    "distribution": "Debian 12",
+    "base_layer": "d6d0586ce8024205fd00d811876170571638957b5095d7e9dd1d015345c8d069",
+    "packages": 88,
+    "native_query": "Debian dpkg-query package management program query tool version 1.21.22 (amd64).",
+    "identities_versions_and_sizes_match": true,
+    "database_unchanged": true,
+    "database_sha256": "3dfb6f2eb559ce1516899779d688fcf60e53da68713751a8a470eb21f493230a",
+    "warnings": [],
+    "validation_scope": "Read-only extracted base filesystem on Fedora; not a booted OS or desktop test"
+  },
+  {
+    "distribution": "Debian 13",
+    "base_layer": "75bbc6c906935bef75c0bf6168204f4641277e1d5aa83b71ca7f586f605ad3d2",
+    "packages": 78,
+    "native_query": "Debian dpkg-query package management program query tool version 1.22.22 (amd64).",
+    "identities_versions_and_sizes_match": true,
+    "database_unchanged": true,
+    "database_sha256": "c892d8ab1d6df55b300e40765cdf7760c80be90f84f2682557b4307a9e34ec57",
+    "warnings": [],
+    "validation_scope": "Read-only extracted base filesystem on Fedora; not a booted OS or desktop test"
+  }
+]
