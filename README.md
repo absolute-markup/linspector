@@ -82,3 +82,5 @@ Source is published for inspection and testing. Copyright remains with Absolute 
 **Linspector** — LINux + inSPECTOR
 
 Designed and developed by **Absolute Markup**.
+
+<sub>Developed by a human at Absolute Markup, with Codex assisting with implementation and testing.</sub>
