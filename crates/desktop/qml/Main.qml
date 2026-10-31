@@ -8,7 +8,7 @@ ApplicationWindow {
     visible: true
     width: 1480; height: 960
     minimumWidth: 1060; minimumHeight: 760
-    title: "Linspector · Absolute Markup"
+    title: "Linspector"
     onClosing: function(event) {
         if (backend.action_running) {
             event.accepted = false
